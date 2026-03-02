@@ -52,6 +52,13 @@ export default function SentPage() {
             >
               Back to home
             </button>
+            <button
+              type="button"
+              className="ghost-button"
+              onClick={() => router.push('/archive')}
+            >
+              View sent cards
+            </button>
           </div>
         </div>
       </section>

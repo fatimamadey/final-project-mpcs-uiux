@@ -195,6 +195,11 @@ export default function CreatePage() {
                 I&apos;ll tweak it later
               </button>
             </div>
+
+            <p className="muted-note">
+              Want to fine‑tune how it looks? You can adjust card type, photo,
+              stamps, and ink on the next steps—but none of that is required.
+            </p>
           </div>
 
           <div className="layout-stack">
@@ -279,6 +284,49 @@ export default function CreatePage() {
                   </div>
                 </div>
               )}
+            </div>
+
+            <div className="divider-soft" />
+
+            <div className="field-group">
+              <p className="field-label">Optional finishing touches</p>
+              <div className="button-row" style={{ marginTop: '0.75rem' }}>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/card-type')}
+                >
+                  Card type preview
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/photo')}
+                >
+                  Add a photo
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/stamps')}
+                >
+                  Pick a stamp
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/handwriting')}
+                >
+                  Handwriting &amp; ink
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/final-preview')}
+                >
+                  See final preview
+                </button>
+              </div>
             </div>
           </div>
         </div>

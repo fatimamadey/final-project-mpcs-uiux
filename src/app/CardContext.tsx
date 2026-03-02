@@ -10,11 +10,14 @@ import React, {
 
 type CardBackground = 'cream' | 'blush' | 'sage';
 type CardFont = 'tidy' | 'handwritten' | 'typewriter';
+type InkColor = 'black' | 'blue' | 'sepia';
+type CardType = 'postcard' | 'letter';
 
 export type CardStyle = {
   background: CardBackground;
   font: CardFont;
   handwritten: boolean;
+  ink: InkColor;
 };
 
 export type CardAddress = {
@@ -24,11 +27,21 @@ export type CardAddress = {
   postalCode: string;
 };
 
+export type CardPhotoPlacement = 'front' | 'inside';
+
+export type CardPhoto = {
+  url: string;
+  placement: CardPhotoPlacement;
+};
+
 export type CardState = {
   occasion?: string;
   message: string;
   style: CardStyle;
   address: CardAddress;
+  type: CardType;
+  photo?: CardPhoto;
+  stampId?: string;
 };
 
 type CardContextValue = {
@@ -37,6 +50,9 @@ type CardContextValue = {
   setMessage: (message: string) => void;
   setStyle: (partial: Partial<CardStyle>) => void;
   setAddress: (partial: Partial<CardAddress>) => void;
+  setType: (type: CardType) => void;
+  setPhoto: (photo?: CardPhoto) => void;
+  setStamp: (stampId?: string) => void;
   reset: () => void;
 };
 
@@ -47,6 +63,7 @@ const defaultCard: CardState = {
     background: 'cream',
     font: 'tidy',
     handwritten: false,
+    ink: 'sepia',
   },
   address: {
     name: '',
@@ -54,6 +71,9 @@ const defaultCard: CardState = {
     city: '',
     postalCode: '',
   },
+  type: 'postcard',
+  photo: undefined,
+  stampId: undefined,
 };
 
 const CardContext = createContext<CardContextValue | undefined>(undefined);
@@ -89,6 +109,21 @@ export function CardProvider({ children }: { children: ReactNode }) {
             ...prev.address,
             ...partial,
           },
+        })),
+      setType: (type) =>
+        setCard((prev) => ({
+          ...prev,
+          type,
+        })),
+      setPhoto: (photo) =>
+        setCard((prev) => ({
+          ...prev,
+          photo,
+        })),
+      setStamp: (stampId) =>
+        setCard((prev) => ({
+          ...prev,
+          stampId,
         })),
       reset: () => setCard(defaultCard),
     }),

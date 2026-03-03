@@ -19,12 +19,12 @@ export default function ReviewPage() {
       <section className="app-panel">
         <header>
           <p className="screen-header-eyebrow">
-            Step 3 · Details that make it real
+            Step 3 · Address
           </p>
           <h1 className="screen-title">Check your card and address.</h1>
           <p className="screen-subtitle">
             Take a quick look at how everything will appear on paper, then add a
-            mailing address so we know where this moment is headed.
+            mailing address.
           </p>
         </header>
 
@@ -33,7 +33,9 @@ export default function ReviewPage() {
         <div className="screen-layout">
           <div className="layout-stack">
             <div className="card-preview-header">
-              <span>Postcard preview</span>
+            <p className="screen-header-eyebrow">
+                Preview
+            </p>
               <div className="card-tab-row">
                 <button
                   type="button"
@@ -63,11 +65,6 @@ export default function ReviewPage() {
             </div>
 
             <CardPreview card={card} side={side} />
-
-            <p className="muted-note">
-              We&apos;ll lightly typeset this to feel like a neat, human
-              handwriting style—no glossy greeting card vibes.
-            </p>
           </div>
 
           <div className="layout-stack">
@@ -125,8 +122,7 @@ export default function ReviewPage() {
             </div>
 
             <p className="muted-note">
-              We&apos;ll print this on warm, textured stock and drop it in the
-              actual mail for you.
+              We got it from here. ✉️
             </p>
 
             <div className="button-row">

@@ -36,10 +36,10 @@ export default function PhotoPage() {
       <section className="app-panel">
         <header>
           <p className="screen-header-eyebrow">Optional · Add a small visual</p>
-          <h1 className="screen-title">Add a photo if it helps tell the story.</h1>
+          <h1 className="screen-title">Add a photo to help tell the story.</h1>
           <p className="screen-subtitle">
-            A favorite place, an inside joke, a screenshot of a note—anything
-            that might make the moment feel a bit more like the two of you.
+            A favorite place, an inside joke, a screenshot of a note — anything
+            that might the letter feel more personal.
           </p>
         </header>
 
@@ -48,7 +48,7 @@ export default function PhotoPage() {
         <div className="screen-layout">
           <div className="layout-stack">
             <div className="field-group">
-              <p className="field-label">Upload one image</p>
+              <p className="field-label">Upload an Image</p>
               <input
                 className="input"
                 type="file"
@@ -89,8 +89,7 @@ export default function PhotoPage() {
                 </button>
               </div>
               <p className="field-helper">
-                Front works well for postcards; inside feels more intimate for
-                folded cards.
+                <strong>Advice:</strong> Choose front for postcard and inside for the letter.
               </p>
             </div>
 
@@ -101,7 +100,7 @@ export default function PhotoPage() {
                 onClick={handleUsePhoto}
                 disabled={!previewUrl}
               >
-                Use this photo
+                Use this Photo
               </button>
               <button
                 type="button"
@@ -114,7 +113,7 @@ export default function PhotoPage() {
           </div>
 
           <div className="layout-stack">
-            <p className="field-label">Rough crop preview</p>
+            <p className="field-label">Crop Preview</p>
             <div className="card-preview-shell">
               <div className="card">
                 <div className="card-decoration" />
@@ -129,10 +128,6 @@ export default function PhotoPage() {
                       }}
                     />
                   </div>
-                  <p className="muted-note">
-                    We&apos;ll keep the edges soft so it feels printed, not
-                    pasted on.
-                  </p>
                 </div>
               </div>
             </div>
@@ -145,7 +140,7 @@ export default function PhotoPage() {
             className="ghost-button"
             onClick={() => router.back()}
           >
-            Go back
+            ← Go Back
           </button>
         </div>
       </section>

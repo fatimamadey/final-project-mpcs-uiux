@@ -42,12 +42,11 @@ export default function ArchivePage() {
       <section className="app-panel">
         <header>
           <p className="screen-header-eyebrow">
-            Gentle history of things you&apos;ve sent
+           History
           </p>
           <h1 className="screen-title">Sent cards archive.</h1>
           <p className="screen-subtitle">
-            A quiet record of the moments you&apos;ve decided were worth putting
-            on paper.
+            Here are all the cards you've sent.
           </p>
         </header>
 
@@ -101,6 +100,13 @@ export default function ArchivePage() {
               onClick={() => router.push('/')}
             >
               Send a new card
+            </button>
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={() => router.push('/tracker')}
+            >
+              Track Your Current Cards
             </button>
             <button
               type="button"

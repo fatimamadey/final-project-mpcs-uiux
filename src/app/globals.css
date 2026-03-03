@@ -533,7 +533,7 @@ select {
 .final-preview-shell {
   border-radius: 26px;
   padding: 2rem;
-  background: radial-gradient(circle at top, #fffaf4, #eaddcf);
+  background: radial-gradient(circle at top, #fffaf4, #e2d5c6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -550,6 +550,33 @@ select {
   margin-top: 1.2rem;
   font-size: 0.86rem;
   color: var(--muted);
+}
+
+.final-preview-layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.final-preview-layout--postcard .final-preview-shadow-card {
+  transform: rotate(-5deg) translateY(4px);
+  box-shadow:
+    0 28px 60px rgba(81, 54, 34, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.final-preview-layout--letter {
+  gap: 1.75rem;
+}
+
+.final-preview-letter-outside,
+.final-preview-letter-inside {
+  transform: rotate(-3deg);
+}
+
+.final-preview-letter-inside {
+  transform: rotate(2deg) translateY(6px);
 }
 
 .timeline {
@@ -587,6 +614,43 @@ select {
   border: 2px solid #fdf5ee;
   background: var(--accent);
   box-shadow: 0 0 0 1px rgba(169, 139, 114, 0.5);
+}
+
+.timeline-marker--pending {
+  background: rgba(169, 139, 114, 0.25);
+  box-shadow: 0 0 0 1px rgba(169, 139, 114, 0.35);
+}
+
+.timeline-marker--active {
+  background: linear-gradient(135deg, var(--accent), #e09b7a);
+  box-shadow:
+    0 0 0 1px rgba(169, 139, 114, 0.55),
+    0 6px 16px rgba(201, 139, 107, 0.45);
+}
+
+.timeline-marker--done {
+  background: rgba(201, 139, 107, 0.95);
+}
+
+.tracker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tracker-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(169, 139, 114, 0.18);
+  overflow: hidden;
+  border: 1px solid rgba(169, 139, 114, 0.25);
+}
+
+.tracker-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), #e09b7a);
 }
 
 .timeline-title {

@@ -11,22 +11,16 @@ export default function Home() {
         <div>
           <p className="screen-header-eyebrow">Paper Kindness</p>
           <h1 className="screen-title">
-            Send a real postcard that actually sounds like you.
+            Write a message. We’ll handle the rest.
           </h1>
           <p className="screen-subtitle">
-            No stamps, no printer, no “perfect wording” pressure. Just a few
-            honest lines, turned into something someone can hold onto.
+            Turn a few words into something physical.
           </p>
         </div>
 
         <div className="divider-soft" />
 
         <div className="layout-stack">
-          <p className="eyeline">
-            <strong>Here’s the idea:</strong> you write from the heart, we take
-            care of the paper, ink, and mailbox.
-          </p>
-
           <div className="button-row">
             <button
               className="primary-button"
@@ -40,17 +34,15 @@ export default function Home() {
               type="button"
               onClick={() => router.push('/occasion')}
             >
-              I&apos;m not sure what to say yet
+              I’m not sure what to say
             </button>
           </div>
 
           <p className="muted-note">
-            It doesn&apos;t have to be long, or clever, or perfectly phrased to
-            be meaningful.
+            It doesn’t need to be perfect to matter.
           </p>
         </div>
       </section>
     </div>
   );
 }
-

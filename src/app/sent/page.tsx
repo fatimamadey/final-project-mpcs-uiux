@@ -20,22 +20,17 @@ export default function SentPage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">Delivered to the future</p>
+          <p className="screen-header-eyebrow">Delivered... 📦</p>
           <h1 className="screen-title">Your card is on its way.</h1>
           <p className="screen-subtitle">
-            We&apos;ll take it from here—onto paper, into an envelope, and out
-            into the real world. The most important part was you deciding to
-            send it.
+            We&apos;ll take it from here — onto paper, into an envelope, and
+            into the world.
           </p>
         </header>
 
         <div className="divider-soft" />
 
         <div className="layout-stack">
-          <p className="eyeline">
-            It doesn&apos;t have to be perfect to be meaningful. Someone you
-            care about is going to open their mailbox and see your name.
-          </p>
 
           <div className="button-row">
             <button
@@ -43,21 +38,28 @@ export default function SentPage() {
               className="primary-button"
               onClick={handleSendAnother}
             >
-              Send another card
+              Send Another Card
             </button>
             <button
               type="button"
               className="ghost-button"
               onClick={handleBackHome}
             >
-              Back to home
+              Back to Home
             </button>
             <button
               type="button"
               className="ghost-button"
               onClick={() => router.push('/archive')}
             >
-              View sent cards
+              View Sent Cards
+            </button>
+            <button
+              type="button"
+              className="ghost-button"
+              onClick={() => router.push('/tracker')}
+            >
+              Track Your Card
             </button>
           </div>
         </div>

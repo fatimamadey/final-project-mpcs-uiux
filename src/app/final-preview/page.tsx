@@ -18,15 +18,11 @@ export default function FinalPreviewPage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">
-            Optional · One more look before it travels
-          </p>
-          <h1 className="screen-title">
-            See your card as if it&apos;s on the table.
-          </h1>
+          <p className="screen-header-eyebrow">Optional · Final Preview</p>
+          <h1 className="screen-title">See the finished card.</h1>
           <p className="screen-subtitle">
-            This is roughly how it will feel when someone sets it down next to
-            their keys or tucks it into a book.
+            Here&apos;s what your postcard or letter will roughly look like in
+            real life.
           </p>
         </header>
 
@@ -35,7 +31,7 @@ export default function FinalPreviewPage() {
         <div className="screen-layout">
           <div className="layout-stack">
             <div className="card-preview-header">
-              <span>High‑fidelity preview</span>
+              <span>{card.type === 'postcard' ? 'Postcard' : 'Letter'}</span>
               <div className="card-tab-row">
                 <button
                   type="button"
@@ -47,7 +43,7 @@ export default function FinalPreviewPage() {
                     .join(' ')}
                   onClick={() => setSide('front')}
                 >
-                  {card.type === 'postcard' ? 'Front' : 'Cover'}
+                  {card.type === 'postcard' ? 'Front' : 'Outside'}
                 </button>
                 <button
                   type="button"
@@ -65,25 +61,33 @@ export default function FinalPreviewPage() {
             </div>
 
             <div className="final-preview-shell">
-              <div className="final-preview-card">
-                <CardPreview card={card} side={side} />
-              </div>
+              {card.type === 'postcard' ? (
+                <div className="final-preview-layout final-preview-layout--postcard">
+                  <div className="final-preview-shadow-card">
+                    <CardPreview card={card} side={side} />
+                  </div>
+                </div>
+              ) : (
+                <div className="final-preview-layout final-preview-layout--letter">
+                  <div className="final-preview-letter-outside">
+                    <CardPreview card={card} side="front" />
+                  </div>
+                  <div className="final-preview-letter-inside">
+                    <CardPreview card={card} side="back" />
+                  </div>
+                </div>
+              )}
             </div>
             <p className="final-preview-note">
-              Edges, textures, and tiny imperfections will vary—just like real
-              paper.
+              Colors and paper texture are approximate, but layout and content
+              match what will be printed.
             </p>
           </div>
 
           <div className="layout-stack">
-            <p className="field-label">What happens next</p>
+            <p className="field-label">Done with how it looks?</p>
             <p className="field-helper">
-              From here, your words will be printed on warm stock, paired with
-              your chosen stamp and ink style, and dropped into the real mail.
-            </p>
-            <p className="field-helper">
-              If anything feels off, you can always hop back to the writing
-              step. Most people end up overthinking more than they need to.
+              Feels right? Add an address and send it.
             </p>
 
             <div className="button-row">
@@ -92,14 +96,14 @@ export default function FinalPreviewPage() {
                 className="primary-button"
                 onClick={handleContinue}
               >
-                Looks right · continue
+                Looks Great · Continue
               </button>
               <button
                 type="button"
                 className="ghost-button"
                 onClick={() => router.back()}
               >
-                Go back and tweak
+                Go Back and Tweak
               </button>
             </div>
           </div>

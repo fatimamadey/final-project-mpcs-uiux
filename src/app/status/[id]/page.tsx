@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type Props = {
   params: {
@@ -10,6 +10,7 @@ type Props = {
 
 export default function StatusPage({ params }: Props) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { id } = params;
 
   const steps = [
@@ -38,6 +39,12 @@ export default function StatusPage({ params }: Props) {
     },
   ];
 
+  const currentParam = searchParams.get('current');
+  const currentIndex = Math.max(
+    0,
+    Math.min(steps.length - 1, Number(currentParam ?? '0') || 0),
+  );
+
   return (
     <div className="app-shell">
       <section className="app-panel">
@@ -55,17 +62,29 @@ export default function StatusPage({ params }: Props) {
         <div className="divider-soft" />
 
         <div className="layout-stack">
+          <p className="eyeline">
+            <strong>Current step:</strong> {steps[currentIndex]?.title}
+          </p>
           <div className="timeline">
-            {steps.map((step) => (
+            {steps.map((step, idx) => {
+              const markerClass =
+                idx < currentIndex
+                  ? 'timeline-marker--done'
+                  : idx === currentIndex
+                    ? 'timeline-marker--active'
+                    : 'timeline-marker--pending';
+
+              return (
               <div key={step.title} className="timeline-item">
-                <div className="timeline-marker" />
+                <div className={['timeline-marker', markerClass].join(' ')} />
                 <div className="timeline-title">{step.title}</div>
                 <div
                   className="timeline-description"
                   dangerouslySetInnerHTML={{ __html: step.description }}
                 />
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <p className="muted-note">
@@ -80,6 +99,13 @@ export default function StatusPage({ params }: Props) {
               onClick={() => router.push('/archive')}
             >
               Back to sent cards
+            </button>
+            <button
+              type="button"
+              className="secondary-button"
+              onClick={() => router.push('/tracker')}
+            >
+              In‑transit tracker
             </button>
             <button
               type="button"

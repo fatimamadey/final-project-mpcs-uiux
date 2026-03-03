@@ -3,11 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { useCard } from '../CardContext';
 
-const OPTIONS = ['Birthday', 'Thank you', 'Miss you', 'Just because'];
+const OPTIONS = ['Birthday', 'Thank You', 'Miss You', 'Just Because'];
 
 export default function OccasionPage() {
   const router = useRouter();
-  const { card, setOccasion } = useCard();
+  const { card, setOccasion, setType } = useCard();
 
   const handleSelect = (option: string) => {
     setOccasion(option);
@@ -26,11 +26,10 @@ export default function OccasionPage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">Step 1 · Gentle starting point</p>
-          <h1 className="screen-title">What&apos;s this card for?</h1>
+          <p className="screen-header-eyebrow">Step 1</p>
+          <h1 className="screen-title">What are you sending?</h1>
           <p className="screen-subtitle">
-            No need to overthink it—picking a loose occasion can make the first
-            sentence a little less intimidating.
+            Pick a rough reason and format. You can change it later.
           </p>
         </header>
 
@@ -38,7 +37,7 @@ export default function OccasionPage() {
 
         <div className="layout-stack">
           <div className="field-group">
-            <p className="field-label">Choose an occasion</p>
+            <p className="field-label">Occasion</p>
             <div className="pill-choice-row">
               {OPTIONS.map((option) => (
                 <button
@@ -57,7 +56,40 @@ export default function OccasionPage() {
               ))}
             </div>
             <p className="field-helper">
-              You can always change this later, or ignore it completely.
+              This just helps you get started. It&apos;s optional.
+            </p>
+          </div>
+
+          <div className="field-group">
+            <p className="field-label">Format</p>
+            <div className="pill-choice-row">
+              <button
+                type="button"
+                className={[
+                  'pill-choice',
+                  card.type === 'postcard' ? 'pill-choice--selected' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onClick={() => setType('postcard')}
+              >
+                <span>Postcard</span>
+              </button>
+              <button
+                type="button"
+                className={[
+                  'pill-choice',
+                  card.type === 'letter' ? 'pill-choice--selected' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
+                onClick={() => setType('letter')}
+              >
+                <span>Letter</span>
+              </button>
+            </div>
+            <p className="field-helper">
+              Postcard shows message on the back. Letter opens up to it.
             </p>
           </div>
 
@@ -67,14 +99,14 @@ export default function OccasionPage() {
               className="primary-button"
               onClick={handleNext}
             >
-              Continue to writing
+              Continue to Writing
             </button>
             <button
               type="button"
               className="secondary-button"
               onClick={handleSkip}
             >
-              Skip occasion
+              Skip Occasion
             </button>
           </div>
         </div>

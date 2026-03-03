@@ -23,8 +23,7 @@ export default function HandwritingPage() {
             Try out handwriting and ink styles.
           </h1>
           <p className="screen-subtitle">
-            Same message, slightly different moods. Pick the one that feels most
-            like how you&apos;d actually write this out by hand.
+            Same message, slightly different vibe. Pick the one you like best.
           </p>
         </header>
 
@@ -49,7 +48,7 @@ export default function HandwritingPage() {
                     setStyle({ handwritten: false, font: 'tidy' })
                   }
                 >
-                  Typed but gentle
+                  Typed
                 </button>
                 <button
                   type="button"
@@ -65,13 +64,9 @@ export default function HandwritingPage() {
                     setStyle({ handwritten: true, font: 'handwritten' })
                   }
                 >
-                  Handwritten feel
+                  Handwritten
                 </button>
               </div>
-              <p className="field-helper">
-                Both are printed—one just leans closer to how your notebook
-                might look.
-              </p>
             </div>
 
             <div className="field-group">
@@ -125,7 +120,7 @@ export default function HandwritingPage() {
                 className="primary-button"
                 onClick={handleBackToWriting}
               >
-                Use these settings
+                Use these Settings
               </button>
               <button
                 type="button"
@@ -138,12 +133,8 @@ export default function HandwritingPage() {
           </div>
 
           <div className="layout-stack">
-            <p className="field-label">Live handwriting preview</p>
+            <p className="field-label">Handwriting Preview</p>
             <CardPreview card={card} side="front" />
-            <p className="muted-note">
-              Any AI help you ask for will respect this tone—it&apos;s still your
-              voice, just a bit more polished.
-            </p>
           </div>
         </div>
       </section>

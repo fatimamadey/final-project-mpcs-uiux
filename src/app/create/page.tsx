@@ -18,7 +18,7 @@ function refineMessage(original: string): string {
   }
 
   if (!/(love|with love|thinking of you|grateful|appreciate)/i.test(trimmed)) {
-    refined = `${refined}\n\nI really mean all of this — I&apos;m grateful for you.`;
+    refined = `${refined}\n\nI really mean all of this — I'm grateful for you.`;
   }
 
   return refined;
@@ -54,13 +54,10 @@ export default function CreatePage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">
-            Step 2 · Write like yourself
-          </p>
-          <h1 className="screen-title">Let&apos;s write your card.</h1>
+          <p className="screen-header-eyebrow">Step 2</p>
+          <h1 className="screen-title">Write your message.</h1>
           <p className="screen-subtitle">
-            Start with whatever comes to mind. You can polish later—or not at
-            all. The point is that it&apos;s from you.
+            We can tidy it up if you want.
           </p>
         </header>
 
@@ -72,18 +69,14 @@ export default function CreatePage() {
               <p className="field-label">Your message</p>
               <textarea
                 className="textarea"
-                placeholder="Write a few lines you might put in a real handwritten card..."
+                placeholder="What do you want to say?"
                 value={card.message}
                 onChange={(e) => setMessage(e.target.value)}
               />
-              <p className="field-helper">
-                Don&apos;t worry about sounding perfect. Think about how you&apos;d
-                explain this out loud.
-              </p>
             </div>
 
             <div className="field-group">
-              <p className="field-label">Handwriting + mood</p>
+              <p className="field-label">Handwriting + Theme</p>
               <div className="pill-choice-row">
                 <button
                   type="button"
@@ -153,7 +146,7 @@ export default function CreatePage() {
                       setStyle({ handwritten: false, font: 'tidy' })
                     }
                   >
-                    Typed look
+                    Typed
                   </button>
                   <button
                     type="button"
@@ -169,12 +162,9 @@ export default function CreatePage() {
                       setStyle({ handwritten: true, font: 'handwritten' })
                     }
                   >
-                    Handwritten style
+                    Handwritten
                   </button>
                 </div>
-                <p className="muted-note">
-                  Visual only for now—either way, it&apos;s still your words.
-                </p>
               </div>
             </div>
 
@@ -185,26 +175,27 @@ export default function CreatePage() {
                 onClick={handleNext}
                 disabled={!card.message.trim()}
               >
-                Looks good · continue
+                Continue
               </button>
               <button
                 type="button"
                 className="ghost-button"
                 onClick={handleNext}
               >
-                I&apos;ll tweak it later
+                Skip for now
               </button>
             </div>
 
             <p className="muted-note">
-              Want to fine‑tune how it looks? You can adjust card type, photo,
-              stamps, and ink on the next steps—but none of that is required.
+              You can add a photo, stamp, or tweak the look. None of that
+              is required though.
             </p>
           </div>
 
           <div className="layout-stack">
             <div className="card-preview-header">
-              <span>Postcard preview</span>
+            <p className="field-label">Postcard Preview</p>
+
               <div className="card-tab-row">
                 <button
                   type="button"
@@ -216,7 +207,7 @@ export default function CreatePage() {
                     .join(' ')}
                   onClick={() => setSide('front')}
                 >
-                  Front · your words
+                  Front · Message / Address / Stamp
                 </button>
                 <button
                   type="button"
@@ -228,7 +219,7 @@ export default function CreatePage() {
                     .join(' ')}
                   onClick={() => setSide('back')}
                 >
-                  Back · address
+                  Back · Image
                 </button>
               </div>
             </div>
@@ -240,9 +231,7 @@ export default function CreatePage() {
             <div className="field-group">
               <p className="field-label">Need a nudge?</p>
               <p className="field-helper">
-                We&apos;ll gently suggest an edit based on what you wrote. It
-                won&apos;t start from scratch or overwrite anything unless you
-                say so.
+                We&apos;ll suggest a cleaner version of what you wrote with AI. 
               </p>
 
               <div className="button-row" style={{ marginTop: '1rem' }}>
@@ -252,7 +241,7 @@ export default function CreatePage() {
                   onClick={handleRefine}
                   disabled={!canRefine}
                 >
-                  Help me say this better
+                  Suggest a Clearer Version
                 </button>
               </div>
 
@@ -265,7 +254,7 @@ export default function CreatePage() {
                     </div>
                   </div>
                   <div>
-                    <p className="field-label">A gentle alternative</p>
+                    <p className="field-label">An alternative</p>
                     <div className="textarea" style={{ minHeight: 140 }}>
                       <p className="card-message">
                         {suggestion || 'We&apos;ll show a suggestion here.'}
@@ -294,37 +283,30 @@ export default function CreatePage() {
                 <button
                   type="button"
                   className="secondary-button"
-                  onClick={() => router.push('/card-type')}
-                >
-                  Card type preview
-                </button>
-                <button
-                  type="button"
-                  className="secondary-button"
                   onClick={() => router.push('/photo')}
                 >
-                  Add a photo
+                  Add a Photo
                 </button>
                 <button
                   type="button"
                   className="secondary-button"
                   onClick={() => router.push('/stamps')}
                 >
-                  Pick a stamp
+                  Pick a Stamp
                 </button>
                 <button
                   type="button"
                   className="secondary-button"
                   onClick={() => router.push('/handwriting')}
                 >
-                  Handwriting &amp; ink
+                  Handwriting &amp; Ink
                 </button>
                 <button
                   type="button"
                   className="secondary-button"
                   onClick={() => router.push('/final-preview')}
                 >
-                  See final preview
+                  Preview
                 </button>
               </div>
             </div>

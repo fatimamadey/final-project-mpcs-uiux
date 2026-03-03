@@ -30,11 +30,10 @@ export default function StampsPage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">Optional · Little joyful details</p>
+          <p className="screen-header-eyebrow">Optional · It's the little things</p>
           <h1 className="screen-title">Pick a stamp that feels like them.</h1>
           <p className="screen-subtitle">
-            A tiny square of ink, but somehow it changes the whole mood of the
-            card.
+            A little detail that makes the letter feel more personal.
           </p>
         </header>
 

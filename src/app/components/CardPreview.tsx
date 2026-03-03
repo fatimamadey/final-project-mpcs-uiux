@@ -85,7 +85,7 @@ export function CardPreview({ card, side }: Props) {
 
   if (isPostcard && side === 'back') {
     // Photo / image side of a postcard
-    const hasPhoto = card.photo && card.photo.placement === 'front';
+    const hasPhoto = !!card.photo;
     return (
       <div className="card-preview-shell">
         <div

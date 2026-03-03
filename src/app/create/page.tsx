@@ -44,6 +44,8 @@ export default function CreatePage() {
   const handleAcceptSuggestion = () => {
     if (!suggestion) return;
     setMessage(suggestion.replace(/&apos;/g, "'"));
+    setHasRequestedSuggestion(false);
+    setSuggestion('');
   };
 
   const handleNext = () => {
@@ -185,16 +187,48 @@ export default function CreatePage() {
                 Skip for now
               </button>
             </div>
-
             <p className="muted-note">
               You can add a photo, stamp, or tweak the look. None of that
               is required though.
             </p>
+            <div className="field-group">
+              <p className="field-label">Optional finishing touches</p>
+              <div className="button-row" style={{ marginTop: '0.75rem' }}>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/photo')}
+                >
+                  Add a Photo
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/stamps')}
+                >
+                  Pick a Stamp
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/handwriting')}
+                >
+                  Handwriting &amp; Ink
+                </button>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => router.push('/final-preview')}
+                >
+                  Preview
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="layout-stack">
             <div className="card-preview-header">
-            <p className="field-label">Postcard Preview</p>
+            <p className="field-label">Preview</p>
 
               <div className="card-tab-row">
                 <button
@@ -207,7 +241,7 @@ export default function CreatePage() {
                     .join(' ')}
                   onClick={() => setSide('front')}
                 >
-                  Front · Message / Address / Stamp
+                  Front
                 </button>
                 <button
                   type="button"
@@ -219,7 +253,7 @@ export default function CreatePage() {
                     .join(' ')}
                   onClick={() => setSide('back')}
                 >
-                  Back · Image
+                  Back
                 </button>
               </div>
             </div>
@@ -275,41 +309,6 @@ export default function CreatePage() {
               )}
             </div>
 
-            <div className="divider-soft" />
-
-            <div className="field-group">
-              <p className="field-label">Optional finishing touches</p>
-              <div className="button-row" style={{ marginTop: '0.75rem' }}>
-                <button
-                  type="button"
-                  className="secondary-button"
-                  onClick={() => router.push('/photo')}
-                >
-                  Add a Photo
-                </button>
-                <button
-                  type="button"
-                  className="secondary-button"
-                  onClick={() => router.push('/stamps')}
-                >
-                  Pick a Stamp
-                </button>
-                <button
-                  type="button"
-                  className="secondary-button"
-                  onClick={() => router.push('/handwriting')}
-                >
-                  Handwriting &amp; Ink
-                </button>
-                <button
-                  type="button"
-                  className="secondary-button"
-                  onClick={() => router.push('/final-preview')}
-                >
-                  Preview
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </section>

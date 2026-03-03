@@ -70,7 +70,14 @@ export default function FinalPreviewPage() {
               ) : (
                 <div className="final-preview-layout final-preview-layout--letter">
                   <div className="final-preview-letter-outside">
-                    <CardPreview card={card} side="front" />
+                    <div className="final-preview-letter-stack">
+                      {card.photo && (
+                        <div className="final-preview-photo-behind">
+                          <div className="final-preview-photo-behind-inner" />
+                        </div>
+                      )}
+                      <CardPreview card={card} side="front" />
+                    </div>
                   </div>
                   <div className="final-preview-letter-inside">
                     <CardPreview card={card} side="back" />

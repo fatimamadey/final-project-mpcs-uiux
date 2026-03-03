@@ -5,12 +5,12 @@ import { useCard } from '../CardContext';
 import { CardPreview } from '../components/CardPreview';
 
 const STAMPS = [
-  { id: 'Floral', label: 'Floral', emoji: '🌸' },
-  { id: 'Moon', label: 'Night sky', emoji: '🌙' },
-  { id: 'Wave', label: 'Waves', emoji: '🌊' },
-  { id: 'Vintage', label: 'Vintage', emoji: '📮' },
-  { id: 'Sun', label: 'Warm sun', emoji: '☀️' },
-  { id: 'Abstract', label: 'Abstract', emoji: '🌀' },
+  { id: 'floral', label: 'Floral' },
+  { id: 'night', label: 'Night sky' },
+  { id: 'wave', label: 'Waves' },
+  { id: 'vintage', label: 'Vintage' },
+  { id: 'sun', label: 'Warm sun' },
+  { id: 'abstract', label: 'Abstract' },
 ];
 
 export default function StampsPage() {
@@ -30,7 +30,9 @@ export default function StampsPage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">Optional · It's the little things</p>
+          <p className="screen-header-eyebrow">
+            Optional · It&apos;s the little things
+          </p>
           <h1 className="screen-title">Pick a stamp that feels like them.</h1>
           <p className="screen-subtitle">
             A little detail that makes the letter feel more personal.
@@ -55,9 +57,7 @@ export default function StampsPage() {
                   <button
                     key={stamp.id}
                     type="button"
-                    onClick={() =>
-                      setStamp(selected ? undefined : stamp.id)
-                    }
+                    onClick={() => setStamp(selected ? undefined : stamp.id)}
                     className="pill-choice"
                     style={{
                       display: 'flex',
@@ -68,8 +68,16 @@ export default function StampsPage() {
                       borderStyle: selected ? 'solid' : 'dashed',
                     }}
                   >
-                    <span style={{ fontSize: '1.3rem' }}>{stamp.emoji}</span>
-                    <span style={{ marginTop: '0.3rem' }}>{stamp.label}</span>
+                    <span
+                      className={[
+                        'card-stamp',
+                        'card-stamp--chip',
+                        `card-stamp--${stamp.id}`,
+                      ].join(' ')}
+                    />
+                    <span style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>
+                      {stamp.label}
+                    </span>
                   </button>
                 );
               })}

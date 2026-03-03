@@ -10,7 +10,7 @@ import React, {
 
 type CardBackground = 'cream' | 'blush' | 'sage';
 type CardFont = 'tidy' | 'handwritten' | 'typewriter';
-type InkColor = 'black' | 'blue' | 'sepia';
+type InkColor = 'black' | 'blue' | 'sepia' | 'forest' | 'berry' | 'warmgray';
 type CardType = 'postcard' | 'letter';
 
 export type CardStyle = {

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCard } from '../CardContext';
 import { CardPreview } from '../components/CardPreview';
@@ -7,6 +8,7 @@ import { CardPreview } from '../components/CardPreview';
 export default function HandwritingPage() {
   const router = useRouter();
   const { card, setStyle } = useCard();
+  const [showHandwritingModal, setShowHandwritingModal] = useState(false);
 
   const handleBackToWriting = () => {
     router.push('/create');
@@ -108,10 +110,64 @@ export default function HandwritingPage() {
                 >
                   <span>Sepia</span>
                 </button>
+                <button
+                  type="button"
+                  className={[
+                    'pill-choice',
+                    card.style.ink === 'forest' ? 'pill-choice--selected' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() => setStyle({ ink: 'forest' })}
+                >
+                  <span>Forest</span>
+                </button>
+                <button
+                  type="button"
+                  className={[
+                    'pill-choice',
+                    card.style.ink === 'berry' ? 'pill-choice--selected' : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() => setStyle({ ink: 'berry' })}
+                >
+                  <span>Berry</span>
+                </button>
+                <button
+                  type="button"
+                  className={[
+                    'pill-choice',
+                    card.style.ink === 'warmgray'
+                      ? 'pill-choice--selected'
+                      : '',
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
+                  onClick={() => setStyle({ ink: 'warmgray' })}
+                >
+                  <span>Warm gray</span>
+                </button>
               </div>
               <p className="field-helper">
                 Blue and sepia tend to feel softer and more like a real pen.
               </p>
+            </div>
+
+            <div className="field-group">
+              <p className="field-label">Personal handwriting (optional)</p>
+              <p className="field-helper">
+                One day soon you&apos;ll be able to upload a few samples and we&apos;ll match your real handwriting.
+              </p>
+              <div className="button-row" style={{ marginTop: '0.75rem' }}>
+                <button
+                  type="button"
+                  className="secondary-button"
+                  onClick={() => setShowHandwritingModal(true)}
+                >
+                  Record your own handwriting
+                </button>
+              </div>
             </div>
 
             <div className="button-row">
@@ -137,6 +193,26 @@ export default function HandwritingPage() {
             <CardPreview card={card} side="front" />
           </div>
         </div>
+
+        {showHandwritingModal && (
+          <div className="modal-backdrop">
+            <div className="modal">
+              <p className="modal-title">Personal handwriting is coming soon</p>
+              <p className="modal-body">
+                In the future, you&apos;ll be able to record your own handwriting so we can mimic it on every card. For now, you can keep using the built-in handwriting style.
+              </p>
+              <div className="button-row" style={{ marginTop: '1rem' }}>
+                <button
+                  type="button"
+                  className="primary-button"
+                  onClick={() => setShowHandwritingModal(false)}
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );

@@ -41,12 +41,10 @@ export default function ArchivePage() {
     <div className="app-shell">
       <section className="app-panel">
         <header>
-          <p className="screen-header-eyebrow">
-           History
-          </p>
+          <p className="screen-header-eyebrow">History</p>
           <h1 className="screen-title">Sent cards archive.</h1>
           <p className="screen-subtitle">
-            Here are all the cards you've sent.
+            Here are all the cards you&apos;ve sent.
           </p>
         </header>
 
